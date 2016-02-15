@@ -1,0 +1,136 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand navImgMax" ng-href="#/">
+                <img alt="MAXit" ng-src="./pict/maxit_darkblue.png">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+
+                    <label class="ma-navbar" ng-hide="KIdisabled" for="gameKI"> Schwierigkeitsstufe:  </label>
+                    <select id="gameKI" class="form-control" ng-model="selectedKIIndex" ng-hide="KIdisabled"
+                            ng-options="k.id as k.type for k in kiList" ng-change="gameKIChanged()">
+                    </select>
+
+                    <select id="gameMode" class="form-control" ng-model="selectedTypeIndex"
+                            ng-options="t.id as t.type for t in typeList" ng-change="gameTypeChanged()">
+                    </select>
+
+                    <!--
+                        <select id="gameSized" class="form-control" ng-model="selectedFieldIndex"
+                        ng-options="a.id as a.name for a in fieldList" ng-change="gameSizeChanged()">
+                    </select>-->
+
+
+                    <button type="button" class="btn btn-default" ng-class="{'btn-danger': sthChanged, 'btn-default': !sthChanged}" ng-click='resetGame()'>
+                        <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Neu laden
+                    </button>
+                </div>
+            </form>
+
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="container maxit-container">
+
+
+    <div id="content">
+
+        <!-- heading -->
+        <div id="heading">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-xs-4 text-to-left">
+                        <div class="score1 player-{{ type1 }}">{{score1}}</div>
+                    </div>
+                    <div class="col-xs-4">
+                        <h1 class="text-to-center">MaxIT</h1>
+                    </div>
+                    <div class="col-xs-4 text-to-right">
+                        <div class="score2 player-{{ type2 }}">{{score2}}</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="game-container">
+            <div board add="clickedOnATile(tIndex)" ng-model='game' class="game-row"></div>
+
+            <div id="win" ng-if="gameOver" class="game-overlay">
+                {{ winText }}
+                <div class="game-button">
+                    <a class="retry-button" ng-click='resetGame()'>Nochmal?</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="game-row clearfix">
+                <div class="col-xs-4 text-to-left">
+                    <div>&nbsp;</div>
+                </div>
+                <div class="col-xs-4">
+                    <button ng-click='resetGame()' class="restart-button">Neu starten</button>
+                </div>
+                <div class="col-xs-4 text-to-right">
+                    <div>&nbsp;</div>
+                </div>
+            </div>
+
+            <hr>
+
+            <p class="description">
+                <h3>Anleitung</h3>
+            Beide Spieler wählen abwechselnd eine Zahl, die zum Punktestand addiert wird. Rote Zahlen sind negativ und werden abgezogen.
+            </p>
+            <p class="description">
+            Du kannst waagerecht ziehen, der Computer (oder Spieler 2) kann sich senkrecht eine Zahl aussuchen.
+                Wenn keine Zahlen  mehr übrig sind oder kein Zug mehr möglich ist, ist das Spiel beendet.
+                Der Spieler mit den meisten Punkten gewinnt.
+            </p>
+            <p class="description">
+                Mit den Pfeiltasten wird der Cursor bewegt, mit der ENTER Taste kann ein Feld ausgewählt werden.
+                Mit der Maus (oder per Berührung auf Tablets und Smartphones) können die Zahlen direkt angeklickt werden.
+            </p>
+            <p class="description">
+                Bei einem Spiel gegen den Computer beginnst Du, bei zwei menschlichen Kontrahenten beginnt Spieler 1.
+                Viel Spass.
+            </p>
+
+
+
+
+        </div>
+        <hr>
+        <div class="footerTxt clearfix" >
+            <div class="pull-left">Version: {{ ::version }} / Wissenschaftliches Projekt / MIM FH Lübeck <a target="_blank" href="https://www.fh-luebeck.de/hochschule/fachbereich-elektrotechnik-und-informatik/studiengaenge/medieninformatik-online-msc/uebersicht/">
+                <span class="glyphicon glyphicon-link" aria-hidden="true"></span></a> / WS 2015/16</div>
+            <div class="pull-right">Melanie Lucht</div>
+        </div>
+        <div class="footerTxt center-block">
+            Powered by AngularJS <a target="_blank" href="https://angularjs.org/">
+            <span class="glyphicon glyphicon-link" aria-hidden="true"></span></a>/
+            Bootstrap <a target="_blank" href="http://getbootstrap.com/"><span class="glyphicon glyphicon-link" aria-hidden="true"></span></a>/
+            MaxIT on GitHub: <a target="_blank" href="https://github.com/Mellyn/maxit"><span class="glyphicon glyphicon-link" aria-hidden="true"></span></a>
+        </div>
+
+        <hr class="footer">
+        <div class="footerGap"></div>
+
+    </div>
+</div>
