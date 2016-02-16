@@ -1,0 +1,9 @@
+<div id="game-{{ ngModel.gameSize }}">
+    <div class="tile-container">
+        <div tile
+             ng-model='tile'
+             ng-repeat='tile in ngModel.tiles track by $id(tile.id || $index)'
+             ng-click="clickMe(tile.index)">
+        </div>
+    </div>
+</div>
