@@ -2,7 +2,7 @@
 
 MaxIT wurde im Rahmen eines wissenschaftlichen Projekts an der Fh Lübeck erstellt.
 
-Das Projekt ist unter [http://www.mellyn.de/projects/maxit](http://www.mellyn.de/projects/maxit) erreichbar.
+Das Projekt ist unter [http://mellyn.de/projects/ws1516/maxit](http://mellyn.de/projects/ws1516/maxit) erreichbar.
 
 
 ### Installation
